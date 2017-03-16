@@ -6,7 +6,7 @@ const username = "chalkers";
 
 // Function to print message to console
 const printMessage = (username, badgeCount, points) => {
-	const message = `${username} has ${badgeCount} total badge(s) and #{points} points in javascript`;
+	const message = `${username} has ${badgeCount} total badge(s) and ${points} points in javascript`;
 	console.log(message);
 }
 
@@ -20,9 +20,8 @@ const request = https.get(`https://teamtreehouse.com/${username}.json`, response
 
 	response.on('end', () => {
 	// Parse the data	
-
-		console.log(body)
+		const profile = JSON.parse(body);
 	// Print the data		
-	
+		printMessage(username, profile.badges.length, profile.points.JavaScript);
 	});
 });
